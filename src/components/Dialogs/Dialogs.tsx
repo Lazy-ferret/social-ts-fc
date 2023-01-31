@@ -1,16 +1,11 @@
 import React from 'react'
 import { Field, Form } from 'react-final-form'
 import { InitialStateType } from '../../redux/dialogsReducer'
-// @ts-ignore
-import { composeValidators, maxLengthCreator, requiredField } from '../../utils/validators/validators.ts'
-// @ts-ignore
-import { Textarea } from '../common/FormsControl/FormsControl.tsx'
-// @ts-ignore
-import DialogItem from './DialogItem/DialogItem.tsx'
-// @ts-ignore
+import { composeValidators, maxLengthCreator, requiredField } from '../../utils/validators/validators'
+import { Textarea } from '../common/FormsControl/FormsControl'
+import DialogItem from './DialogItem/DialogItem'
 import s from './Dialogs.module.css'
-// @ts-ignore
-import Message from './Message/Message.tsx'
+import Message from './Message/Message'
 
 type PropsType = {
     dialogsPage: InitialStateType

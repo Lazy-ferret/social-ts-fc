@@ -1,5 +1,4 @@
-// @ts-ignore
-import { AppStateType } from './reduxStore.ts'
+import { AppStateType } from './reduxStore'
 import { createSelector } from 'reselect'
 
 const getUsersSelector = (state: AppStateType) => {

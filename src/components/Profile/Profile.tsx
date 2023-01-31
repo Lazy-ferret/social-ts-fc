@@ -1,9 +1,7 @@
 import React from 'react'
-// @ts-ignore
-import MyPostsContainer from './MyPosts/MyPostsContainer.tsx'
+import MyPostsContainer from './MyPosts/MyPostsContainer'
 import { ProfileInfoPropsType } from './ProfileInfo/ProfileInfo'
-// @ts-ignore
-import ProfileInfo from './ProfileInfo/ProfileInfo.tsx'
+import ProfileInfo from './ProfileInfo/ProfileInfo'
 
 const Profile: React.FC<ProfileInfoPropsType> = ({ profile, status, updateStatus, isOwner, savePhoto, updateProfile, error }) => {
 

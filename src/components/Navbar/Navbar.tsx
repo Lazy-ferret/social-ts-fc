@@ -1,6 +1,5 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-// @ts-ignore
 import s from './Navbar.module.css'
 
 const linkClassName = (NavData: { isActive: boolean }) => NavData.isActive ? s.active : s.item

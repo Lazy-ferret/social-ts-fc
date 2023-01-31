@@ -1,14 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react'
-// @ts-ignore
-import Paginator from '../common/Paginator/Paginator.tsx'
-// @ts-ignore
-import User from './User.tsx'
+import Paginator from '../common/Paginator/Paginator'
+import User from './User'
 import { UserType } from './../../types/types'
-// @ts-ignore
-import UsersSearchForm from './UsersSearchForm.tsx'
-// @ts-ignore
-import { FilterType, requestUsers, follow, unfollow, actions } from '../../redux/usersReducer.ts'
+import UsersSearchForm from './UsersSearchForm'
+import { FilterType, requestUsers, follow, unfollow, actions } from '../../redux/usersReducer'
 import { useDispatch, useSelector } from 'react-redux'
 import {
     getUsers,
@@ -17,8 +13,7 @@ import {
     getCurrentPage,
     getPageSize,
     getUsersFilter
-    // @ts-ignore
-} from './../../redux/users-selectors.ts'
+} from './../../redux/users-selectors'
 
 type PropsType = {}
 
@@ -30,7 +25,8 @@ const Users: React.FC<PropsType> = () => {
     const filter: FilterType = useSelector(getUsersFilter)
     const followingInProgress: Array<number> = useSelector(getFollowingInProgress)
 
-    const dispatch = useDispatch()
+    // todo: type dispatch
+    const dispatch: any = useDispatch()
 
     useEffect(() => {
         dispatch(requestUsers(currentPage, pageSize, filter))

@@ -1,5 +1,4 @@
 import React from 'react'
-// @ts-ignore
 import s from './../Dialogs.module.css'
 
 type PropsType = {

@@ -1,5 +1,4 @@
 import React from 'react'
-// @ts-ignore
 import preloader from '../../../assets/images/loader.gif'
 
 const Preloader: React.FC = () => {

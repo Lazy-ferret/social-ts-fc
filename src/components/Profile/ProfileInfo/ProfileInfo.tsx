@@ -1,17 +1,10 @@
 import React, { ChangeEvent, useState } from 'react'
-// @ts-ignore
-import Preloader from '../../common/Preloader/Preloader.tsx'
-// @ts-ignore
+import Preloader from '../../common/Preloader/Preloader'
 import styles from './ProfileInfo.module.css'
-// import ProfileStatus from "./ProfileStatus/ProfileStatus";
-// @ts-ignore
-import ProfileStatusWithHooks from './ProfileStatus/ProfileStatusWithHooks.tsx'
-// @ts-ignore
+import ProfileStatusWithHooks from './ProfileStatus/ProfileStatusWithHooks'
 import userPhoto from './../../../assets/images/user.jpg'
-// @ts-ignore
-import ProfileDataForm from './ProfileDataForm.tsx'
-// @ts-ignore
-import ProfileData from './ProfileData.tsx'
+import ProfileDataForm from './ProfileDataForm'
+import ProfileData from './ProfileData'
 import { ProfileType } from '../../../types/types'
 
 export type ProfileInfoPropsType = {
@@ -19,7 +12,7 @@ export type ProfileInfoPropsType = {
     savePhoto: (file: File) => void
     isOwner: boolean
     status: string
-    updateStatus: (status: string) => void 
+    updateStatus: (status: string) => void
     updateProfile: (profile: ProfileType) => Promise<any>
     error: string | null
 }
@@ -50,13 +43,13 @@ const ProfileInfo: React.FC<ProfileInfoPropsType> = ({ profile, savePhoto, isOwn
                 {editMode
                     ? <ProfileDataForm
                         profile={profile}
+                        // @ts-ignore
                         saveFormData={saveFormData}
                         error={error} />
                     : <ProfileData profile={profile}
                         isOwner={isOwner}
                         toEditMode={() => setEditMode(true)} />}
                 <ProfileStatusWithHooks status={status} updateStatus={updateStatus} />
-                {/* <ProfileStatus status={props.status} updateStatus={props.updateStatus} /> */}
             </div>
         </div>
     )

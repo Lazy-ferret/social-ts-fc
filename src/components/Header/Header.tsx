@@ -1,6 +1,5 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-// @ts-ignore
 import styles from './Header.module.css'
 
 export type HeaderStatePropsType = {

@@ -1,5 +1,4 @@
-// @ts-ignore
-import { instance } from "./api.ts"
+import { instance } from "./api"
 
 type GetCaptchaUrlResponseType = {
     url: string

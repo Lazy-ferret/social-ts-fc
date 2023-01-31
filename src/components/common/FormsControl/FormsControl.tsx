@@ -1,5 +1,4 @@
 import React from 'react'
-// @ts-ignore
 import styles from './../FormsControl/FormsControl.module.css'
 
 type FormControlPropsType = {

@@ -1,8 +1,6 @@
 import { BaseThunkType, InferActionsTypes } from './reduxStore'
-// @ts-ignore
-import { profileAPI } from '../api/profile-api.ts'
-// @ts-ignore
-import { usersAPI } from '../api/users-api.ts'
+import { profileAPI } from '../api/profile-api'
+import { usersAPI } from '../api/users-api'
 import { PhotosType, PostsType, ProfileType } from '../types/types'
 
 const ADD_POST = 'social-network/profile/ADD-POST'
@@ -20,7 +18,8 @@ const initialState = {
     profile: null as ProfileType | null,
     status: '',
     photos: [],
-    error: null as string | null
+    error: null as string | null,
+    newPostText: null as string | null
 }
 
 type InitialStateType = typeof initialState

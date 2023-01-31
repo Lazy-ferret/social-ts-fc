@@ -1,9 +1,5 @@
-// @ts-ignore
-import { instance, GetItemsType, APIResponseType } from './api.ts'
-// @ts-ignore
-import { profileAPI } from './profile-api.ts'
-
-
+import { instance, GetItemsType, APIResponseType } from './api'
+import { profileAPI } from './profile-api'
 
 export const usersAPI = {
     getUsers(currentPage: number = 1, pageSize: number = 10, term: string = '', friend: null | boolean = null) {

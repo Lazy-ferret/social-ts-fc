@@ -1,6 +1,5 @@
-import axios from "axios";
-import { UserType } from "../types/types";
-
+import axios from 'axios'
+import { UserType } from '../types/types'
 
 export const instance = axios.create({
     withCredentials: true,

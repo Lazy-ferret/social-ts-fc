@@ -1,15 +1,11 @@
 import { applyMiddleware, combineReducers, compose, legacy_createStore as createStore, Action } from 'redux'
-// @ts-ignore
-import authReducer from './authReducer.ts'
-// @ts-ignore
-import dialogsReducer from './dialogsReducer.ts'
-// @ts-ignore
-import profileReducer from './profileReducer.ts'
-// @ts-ignore
-import usersReducer from './usersReducer.ts'
+import authReducer from './authReducer'
+import dialogsReducer from './dialogsReducer'
+import profileReducer from './profileReducer'
+import usersReducer from './usersReducer'
 import thunkMiddleware, { ThunkAction } from 'redux-thunk'
-// @ts-ignore
-import appReducer from './appReducer.ts'
+
+import appReducer from './appReducer'
 
 const rootReducer = combineReducers({
     profilePage: profileReducer,

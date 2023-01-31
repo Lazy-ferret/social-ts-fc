@@ -2,15 +2,10 @@ import React from 'react'
 import { Field, Form } from 'react-final-form'
 import { connect } from 'react-redux'
 import { Navigate } from 'react-router-dom'
-// @ts-ignore
-import { AppStateType } from '../../redux/reduxStore.ts'
-// @ts-ignore
-import { requiredField } from '../../utils/validators/validators.ts'
-// @ts-ignore
-import { Input } from '../common/FormsControl/FormsControl.tsx'
-// @ts-ignore
-import { login } from './../../redux/authReducer.ts'
-// @ts-ignore
+import { AppStateType } from '../../redux/reduxStore'
+import { requiredField } from '../../utils/validators/validators'
+import { Input } from '../common/FormsControl/FormsControl'
+import { login } from './../../redux/authReducer'
 import style from './Login.module.css'
 
 type MapStatePropsType = {

@@ -1,9 +1,7 @@
 import React from 'react'
 import { Field, Form } from 'react-final-form'
-// @ts-ignore
-import { composeValidators, maxLengthCreator, requiredField } from '../../../../utils/validators/validators.ts'
-// @ts-ignore
-import { Textarea } from '../../../common/FormsControl/FormsControl.tsx'
+import { composeValidators, maxLengthCreator, requiredField } from '../../../../utils/validators/validators'
+import { Textarea } from '../../../common/FormsControl/FormsControl'
 
 type AddPostFormPropsType = {
     onSubmit: (values: AddPostFormValuesType) => void

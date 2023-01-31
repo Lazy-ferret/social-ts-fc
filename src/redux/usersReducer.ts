@@ -1,10 +1,8 @@
 import { APIResponseType } from './../api/api';
 import { BaseThunkType, InferActionsTypes } from './reduxStore'
-// @ts-ignore
-import { usersAPI } from '../api/users-api.ts'
+import { usersAPI } from '../api/users-api'
 import { UserType } from '../types/types'
-// @ts-ignore
-import { updateObjectInArray } from '../utils/helpers/object-helpers.ts'
+import { updateObjectInArray } from '../utils/helpers/object-helpers'
 import { Dispatch } from 'redux'
 
 const FOLLOW = 'social-network/users/FOLLOW'
@@ -32,7 +30,7 @@ const initialState = {
 
 export type InitialState = typeof initialState
 type ActionsType = InferActionsTypes<typeof actions>
-type ThunkType = BaseThunkType<ActionsType>
+export type UsersReducerThunkType = BaseThunkType<ActionsType>
 export type FilterType = typeof initialState.filter
 
 export const actions = {
@@ -99,7 +97,7 @@ const usersReducer = (state = initialState, action: ActionsType): InitialState =
     }
 }
 
-export const requestUsers = (page: number, pageSize: number, filter: FilterType): ThunkType => {
+export const requestUsers = (page: number, pageSize: number, filter: FilterType): UsersReducerThunkType => {
     return async (dispatch) => {
         dispatch(actions.toggleIsFetching(true))
         dispatch(actions.setCurrentPage(page))
@@ -125,13 +123,13 @@ const followUnfollowFlow = async (dispatch: Dispatch<ActionsType>,
     dispatch(actions.toggleFollowingProgress(false, userId))
 }
 
-export const follow = (userId: number): ThunkType => async (dispatch) => {
+export const follow = (userId: number): UsersReducerThunkType => async (dispatch) => {
     const apiMethod = usersAPI.followUser.bind(usersAPI)
     const actionCreator = actions.followSuccess
     await followUnfollowFlow(dispatch, userId, apiMethod, actionCreator)
 }
 
-export const unfollow = (userId: number): ThunkType => async (dispatch) => {
+export const unfollow = (userId: number): UsersReducerThunkType => async (dispatch) => {
     const apiMethod = usersAPI.unfollowUser.bind(usersAPI)
     const actionCreator = actions.unfollowSuccess
     await followUnfollowFlow(dispatch, userId, apiMethod, actionCreator)

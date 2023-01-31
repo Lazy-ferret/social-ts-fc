@@ -1,10 +1,7 @@
 import { BaseThunkType, InferActionsTypes } from './reduxStore'
-// @ts-ignore
-import { authAPI } from '../api/auth-api.ts'
-// @ts-ignore
-import { ResultCodesEnum, ResultCodeForCaptchaEnum } from '../api/api.ts'
-// @ts-ignore
-import { securityAPI } from '../api/security-api.ts'
+import { authAPI } from '../api/auth-api'
+import { ResultCodesEnum, ResultCodeForCaptchaEnum } from '../api/api'
+import { securityAPI } from '../api/security-api'
 
 const SET_USER_DATA = 'social-network/auth/SET_USER_DATA'
 const SET_ERROR = 'social-network/auth/SET_ERROR'

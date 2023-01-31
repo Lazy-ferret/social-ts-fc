@@ -1,6 +1,4 @@
-/* eslint-disable jest/valid-title */
-// @ts-ignore
-import usersReducer, { actions, InitialState } from './usersReducer.ts'
+import usersReducer, { actions, InitialState } from './usersReducer'
 
 let state: InitialState
 
@@ -40,7 +38,8 @@ beforeEach(() => {
         totalUsersCount: 0,
         currentPage: 1,
         isFetching: false,
-        followingInProgress: []
+        followingInProgress: [], 
+        filter: {term: '', friend: null}
     }
 
 })

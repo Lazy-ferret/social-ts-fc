@@ -1,7 +1,5 @@
-// @ts-ignore
-import { instance } from "./api.ts"
-import { PhotosType, ProfileType } from "../types/types"
-import { APIResponseType } from "./api"
+import { instance, APIResponseType } from './api'
+import { PhotosType, ProfileType } from '../types/types'
 
 type SavePhotoResponseDataType = {
     photos: PhotosType

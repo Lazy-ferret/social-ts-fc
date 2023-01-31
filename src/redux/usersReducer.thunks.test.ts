@@ -1,4 +1,3 @@
-
 import { APIResponseType, ResultCodesEnum } from '../api/api'
 import { follow, actions } from './usersReducer'
 import { usersAPI } from '../api/users-api'

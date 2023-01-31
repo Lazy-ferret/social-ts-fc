@@ -2,34 +2,22 @@ import React, { Suspense } from 'react'
 import { connect } from 'react-redux'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import './App.css'
-// @ts-ignore
-import HeaderContainer from './components/Header/HeaderContainer.tsx'
-// @ts-ignore
-import Login from './components/Login/Login.tsx'
-// @ts-ignore
-import Music from './components/Music/Music.tsx'
-// @ts-ignore
-import Navbar from './components/Navbar/Navbar.tsx'
+import HeaderContainer from './components/Header/HeaderContainer'
+import Login from './components/Login/Login'
+import Music from './components/Music/Music'
+import Navbar from './components/Navbar/Navbar'
 import News from './components/News/News'
-// @ts-ignore
-import Settings from './components/Settings/Settings.tsx'
-// @ts-ignore
-import { initializeApp } from './../src/redux/appReducer.ts'
+import Settings from './components/Settings/Settings'
+import { initializeApp } from './../src/redux/appReducer'
 import { compose } from 'redux'
-// @ts-ignore
-import withRouter from './hoc/WithRouter.tsx'
-// @ts-ignore
-import Preloader from './components/common/Preloader/Preloader.tsx'
+import withRouter from './hoc/WithRouter'
+import Preloader from './components/common/Preloader/Preloader'
 import { ComponentType } from 'react'
-// @ts-ignore
-import { AppStateType } from './redux/reduxStore.ts'
-// @ts-ignore
-import UsersPage from './components/Users/UsersContainer.tsx'
+import { AppStateType } from './redux/reduxStore'
+import UsersPage from './components/Users/UsersContainer'
 
-// @ts-ignore
-const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer.tsx'))
-// @ts-ignore
-const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer.tsx'))
+const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'))
+const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'))
 
 type MapPropsType = ReturnType<typeof mapStateToProps>
 type DispatchPropsType = {

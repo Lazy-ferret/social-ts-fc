@@ -1,12 +1,9 @@
 import React from 'react'
 import { PostsType } from '../../../types/types'
 import { AddPostFormValuesType } from './AddPostForm/AddPostForm'
-// @ts-ignore
-import AddPostForm from './AddPostForm/AddPostForm.tsx'
-// @ts-ignore
+import AddPostForm from './AddPostForm/AddPostForm'
 import s from './MyPosts.module.css'
-// @ts-ignore
-import Post from './Post/Post.tsx'
+import Post from './Post/Post'
 
 export type MyPostsStatePropsType = {
     posts: Array<PostsType>

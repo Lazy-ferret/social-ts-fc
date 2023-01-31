@@ -1,10 +1,7 @@
-// @ts-ignore
-import { actions } from '../../redux/dialogsReducer.ts'
-// @ts-ignore
-import Dialogs from './Dialogs.tsx'
+import { actions } from '../../redux/dialogsReducer'
+import Dialogs from './Dialogs'
 import { connect } from 'react-redux'
-// @ts-ignore
-import { withAuthRedirect } from '../../hoc/WithAuthRedirect.tsx'
+import { withAuthRedirect } from '../../hoc/WithAuthRedirect'
 import { compose } from 'redux'
 import { AppStateType } from '../../redux/reduxStore'
 import { ComponentType } from 'react'

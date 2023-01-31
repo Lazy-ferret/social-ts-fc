@@ -1,6 +1,4 @@
-import { ResultCodesEnum, ResultCodeForCaptchaEnum } from './api';
-// @ts-ignore
-import { instance, APIResponseType } from './api.ts'
+import { ResultCodesEnum, ResultCodeForCaptchaEnum, instance, APIResponseType } from './api';
 
 type MeResponsDataType = {
     id: number

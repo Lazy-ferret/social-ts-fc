@@ -1,5 +1,4 @@
 import React from 'react'
-// @ts-ignore
 import s from './Music.module.css'
 
 const Music: React.FC = () => {

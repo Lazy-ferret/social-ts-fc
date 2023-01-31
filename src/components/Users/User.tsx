@@ -1,7 +1,5 @@
 import React from 'react'
-// @ts-ignore
 import styles from './Users.module.css'
-// @ts-ignore
 import userPhoto from '../../assets/images/user.jpg'
 import { NavLink } from 'react-router-dom'
 import { UserType } from '../../types/types'
@@ -55,7 +53,4 @@ const User: React.FC<PropsType> = ({ user, followingInProgress, unfollow, follow
     )
 }
 
-
-
 export default User
-

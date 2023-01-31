@@ -1,10 +1,7 @@
-// @ts-ignore
-import { actions } from '../../../redux/profileReducer.ts'
-// @ts-ignore
-import MyPostsMemo from './MyPosts.tsx'
+import { actions } from '../../../redux/profileReducer'
+import MyPostsMemo from './MyPosts'
 import { connect } from 'react-redux'
-// @ts-ignore
-import { AppStateType } from '../../../redux/reduxStore.ts'
+import { AppStateType } from '../../../redux/reduxStore'
 import { MyPostsDispatchPropsType, MyPostsStatePropsType } from './MyPosts'
 
 const mapStateToProps = (state: AppStateType) => {

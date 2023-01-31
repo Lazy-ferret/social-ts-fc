@@ -1,6 +1,4 @@
-
-// @ts-ignore
-import profileReducer, { actions } from './profileReducer.ts'
+import profileReducer, { actions } from './profileReducer'
 
 const state = {
     posts: [
@@ -10,7 +8,8 @@ const state = {
     profile: null,
     status: '',
     photos: [],
-    error: null as string | null
+    error: null as string | null,
+    newPostText: null as string | null
 }
 
 test('length of posts should be incremented', () => {

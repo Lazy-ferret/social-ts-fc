@@ -1,16 +1,11 @@
 import React, { ComponentType } from 'react'
-// @ts-ignore
-import Profile from './Profile.tsx'
+import Profile from './Profile'
 import { connect } from 'react-redux'
-// @ts-ignore
-import { getUserProfile, getStatus, updateStatus, savePhoto, updateProfile } from './../../redux/profileReducer.ts'
-// @ts-ignore
-import { withAuthRedirect } from '../../hoc/WithAuthRedirect.tsx'
+import { getUserProfile, getStatus, updateStatus, savePhoto, updateProfile } from './../../redux/profileReducer'
+import { withAuthRedirect } from '../../hoc/WithAuthRedirect'
 import { compose } from 'redux'
-// @ts-ignore
-import withRouter from '../../hoc/WithRouter.tsx'
-// @ts-ignore
-import { AppStateType } from './../../redux/reduxStore.ts'
+import withRouter from '../../hoc/WithRouter'
+import { AppStateType } from './../../redux/reduxStore'
 import { ProfileType } from '../../types/types'
 
 type MapStatePropsType = ReturnType<typeof mapStateToProps>

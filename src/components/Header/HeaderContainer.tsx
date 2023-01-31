@@ -1,12 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-// @ts-ignore
-import Header from './Header.tsx'
-// @ts-ignore
-import { logout } from './../../redux/authReducer.ts'
-// @ts-ignore
-import { AppStateType } from './../../redux/reduxStore.ts'
-import { HeaderDispatchPropsType, HeaderStatePropsType } from './Header'
+import { logout } from './../../redux/authReducer'
+import { AppStateType } from './../../redux/reduxStore'
+import Header, { HeaderDispatchPropsType, HeaderStatePropsType } from './Header'
 
 class HeaderContainer extends React.Component<HeaderDispatchPropsType & HeaderStatePropsType> {
     render() {
