@@ -1,110 +1,31 @@
 import React from 'react'
-import { Field, Form } from 'react-final-form'
-import { connect } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 import { AppStateType } from '../../redux/reduxStore'
-import { requiredField } from '../../utils/validators/validators'
-import { Input } from '../common/FormsControl/FormsControl'
 import { login } from './../../redux/authReducer'
-import style from './Login.module.css'
+import LoginForm, { LoginFormValuesType } from './LoginForm'
 
-type MapStatePropsType = {
-    isAuth: boolean
-    captchaUrl: string | null
-    error: string | null
-}
+const Login: React.FC = () => {
+    const captchaUrl = useSelector((state: AppStateType) => state.auth.captchaUrl)
+    const isAuth = useSelector((state: AppStateType) => state.auth.isAuth)
+    const error = useSelector((state: AppStateType) => state.auth.error)
 
-type MapDispatchPropsType = {
-    login: (email: string, password: string, rememberMe: boolean, captcha: string | null) => void
-}
+    const dispatch: any = useDispatch()
 
-type LoginFormValuesType = {
-    email: string
-    password: string
-    rememberMe: boolean
-    captcha: string | null
-}
-
-type LoginFormPropsType = {
-    onSubmit: (values: LoginFormValuesType) => void
-    error: string | null
-    captchaUrl: string | null
-}
-
-const LoginForm: React.FC<LoginFormPropsType> = (props) => {
-    const { onSubmit, error, captchaUrl } = props
-
-    return (
-        <Form
-            initialValues={{
-                email: '',
-                password: '',
-                rememberMe: false,
-                captcha: null
-            }}
-            onSubmit={onSubmit}>
-            {({ handleSubmit }) => (
-                <form onSubmit={handleSubmit}>
-
-                    <div>
-                        <Field
-                            component={Input}
-                            name={'email'}
-                            validate={requiredField}
-                            placeholder={'Email'} />
-                    </div>
-                    <div>
-                        <Field
-                            component={Input}
-                            name={'password'}
-                            type={'password'}
-                            validate={requiredField}
-                            placeholder={'Password'} />
-                    </div>
-                    <div>
-                        <Field
-                            component={Input}
-                            name={'rememberMe'}
-                            type={'checkbox'} /> remember me
-                    </div>
-                    {captchaUrl && <img src={captchaUrl} alt='captcha' />}
-                    {captchaUrl && <Field
-                        component={Input}
-                        name={'captcha'}
-                        validate={requiredField}
-                        placeholder={'captcha'} />}
-
-                    {error && <div className={style.formError}>{error}</div>}
-                    <div>
-                        <button>Login</button>
-                    </div>
-                </form>
-            )}
-        </Form>
-    )
-}
-
-const Login: React.FC<MapStatePropsType & MapDispatchPropsType> = (props) => {
     const onSubmit = (formData: LoginFormValuesType) => {
-        props.login(formData.email, formData.password, formData.rememberMe, formData.captcha)
+        dispatch(login(formData.email, formData.password, formData.rememberMe, formData.captcha))
     }
 
-    if (props.isAuth) {
+    if (isAuth) {
         return <Navigate to='/profile' />
     }
 
     return (
         <div>
             <h1>Login</h1>
-            <LoginForm onSubmit={onSubmit} error={props.error} captchaUrl={props.captchaUrl} />
+            <LoginForm onSubmit={onSubmit} error={error} captchaUrl={captchaUrl} />
         </div>
     )
 }
 
-const mapStateToProps = (state: AppStateType): MapStatePropsType => ({
-    isAuth: state.auth.isAuth,
-    error: state.auth.error,
-    captchaUrl: state.auth.captchaUrl
-})
-
-export default connect(mapStateToProps, { login })(Login)
+export default Login
