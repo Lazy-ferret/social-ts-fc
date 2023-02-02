@@ -1,24 +1,25 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { PostsType } from '../../../types/types'
 import { AddPostFormValuesType } from './AddPostForm/AddPostForm'
 import AddPostForm from './AddPostForm/AddPostForm'
 import s from './MyPosts.module.css'
 import Post from './Post/Post'
+import { useDispatch, useSelector } from 'react-redux'
+import { AppStateType } from '../../../redux/reduxStore'
+import { actions } from '../../../redux/profileReducer'
 
-export type MyPostsStatePropsType = {
-    posts: Array<PostsType>
-}
-export type MyPostsDispatchPropsType = {
-    addPost: (newPostText: string) => void
-}
+const MyPosts: React.FC = () => {
+    
+    const posts: Array<PostsType> = useSelector((state: AppStateType) => state.profilePage.posts)
 
-const MyPosts: React.FC<MyPostsStatePropsType & MyPostsDispatchPropsType> = (props) => {
-    const postsElements = [...props.posts]
+    const dispatch = useDispatch()
+
+    const postsElements: ReactNode = posts
         .reverse()
         .map(post => <Post message={post.message} likesCount={post.likesCount} key={post.id} />)
 
     const onAddPost = (values: AddPostFormValuesType) => {
-        props.addPost(values.newPostText)
+        dispatch(actions.addPost(values.newPostText))
         values.newPostText = ''
     }
 

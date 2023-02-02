@@ -27,7 +27,7 @@ type ActionsType = InferActionsTypes<typeof actions>
 type ThunkType = BaseThunkType<ActionsType>
 
 export const actions = {
-    addPostCreator: (newPostText: string) => ({ type: ADD_POST, newPostText } as const),
+    addPost: (newPostText: string) => ({ type: ADD_POST, newPostText } as const),
     deletePostCreator: (postId: number) => ({ type: DELETE_POST, postId } as const),
     setUserProfile: (profile: ProfileType) => ({ type: SET_USER_PROFILE, profile } as const),
     setStatus: (status: string) => ({ type: SET_STATUS, status } as const),

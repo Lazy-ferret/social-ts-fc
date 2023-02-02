@@ -13,19 +13,19 @@ const state = {
 }
 
 test('length of posts should be incremented', () => {
-    let action = actions.addPostCreator('new post text')
+    let action = actions.addPost('new post text')
     let newState = profileReducer(state, action)
     expect(newState.posts.length).toBe(3)
 })
 
 test('new post should be added with right message', () => {
-    let action = actions.addPostCreator('new post text')
+    let action = actions.addPost('new post text')
     let newState = profileReducer(state, action)
     expect(newState.posts[2].message).toBe('new post text')
 })
 
 test('new post should be added with no likes', () => {
-    let action = actions.addPostCreator('new post text')
+    let action = actions.addPost('new post text')
     let newState = profileReducer(state, action)
     expect(newState.posts[2].likesCount).toBe(0)
 })
