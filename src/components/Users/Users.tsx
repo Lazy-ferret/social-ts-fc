@@ -14,8 +14,16 @@ import {
     getPageSize,
     getUsersFilter
 } from './../../redux/users-selectors'
+import { createSearchParams, useLocation, useNavigate } from 'react-router-dom'
 
 type PropsType = {}
+
+type ParamsType = {
+    page?: string
+    count?: string
+    term?: string
+    friend?: string
+}
 
 const Users: React.FC<PropsType> = () => {
     const users: Array<UserType> = useSelector(getUsers)
@@ -27,10 +35,52 @@ const Users: React.FC<PropsType> = () => {
 
     // todo: type dispatch
     const dispatch: any = useDispatch()
+    const navigate = useNavigate()
+    const location = useLocation()  
 
-    useEffect(() => {
-        dispatch(requestUsers(currentPage, pageSize, filter))
-    }, [])
+    useEffect(() => {   
+        const queryParams: ParamsType = {}
+        if (!!filter.term) queryParams.term = filter.term
+        if(filter.friend !== null) queryParams.friend = String(filter.friend)
+        if (currentPage !== 1) queryParams.page = String(currentPage)
+
+        const query = new URLSearchParams(location.search)    
+        const queryPage = query.get('page')
+        const queryTerm = query.get('term')
+        const queryFriend = query.get('friend')
+    
+        let actualPage = currentPage
+        if (!!queryPage) actualPage = Number(queryPage)
+
+        let actualFilter = filter
+        if (!!queryTerm) actualFilter = {...actualFilter, term: queryTerm}
+
+        switch (queryFriend) {
+            case "null":
+                actualFilter = { ...actualFilter, friend: null }
+                break
+            case "true":
+                actualFilter = { ...actualFilter, friend: true }
+                break
+            case "false":
+                actualFilter = { ...actualFilter, friend: false }
+                break
+            default:
+                break
+        }
+        dispatch(requestUsers(actualPage, pageSize, actualFilter))
+    }, [location.search]) 
+
+    useEffect (() => {
+        const queryParams: ParamsType = {}
+        if (!!filter.term) queryParams.term = filter.term
+        if(filter.friend !== null) queryParams.friend = String(filter.friend)
+        if (currentPage !== 1) queryParams.page = String(currentPage)
+    
+        const navigator =  (pathname: string, params: ParamsType ) =>
+            navigate(`${pathname}?${createSearchParams(params)}`);
+        navigator("/users", queryParams)
+    }, [filter, currentPage, pageSize])
 
     useEffect(() => {
         return () => {
