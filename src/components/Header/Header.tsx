@@ -1,33 +1,50 @@
+import Avatar from 'antd/es/avatar'
+import { Col, Row } from 'antd/es/grid'
+import { Header } from 'antd/es/layout/layout'
+import Menu, { MenuProps } from 'antd/es/menu'
+import { UserOutlined } from '@ant-design/icons'
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import styles from './Header.module.css'
+import { useDispatch, useSelector } from 'react-redux'
+import { selectCurrentUserLogin, selectIsAuth } from '../../redux/auth-selectors'
+import { logout } from '../../redux/authReducer'
+import Button from 'antd/es/button';
 
-export type HeaderStatePropsType = {
-    isAuth: boolean
-    login: string | null
-}
-export type HeaderDispatchPropsType = {
-    logout: () => void
-}
+const AppHeader: React.FC = () => {
+    const isAuth = useSelector(selectIsAuth)
+    const login = useSelector(selectCurrentUserLogin)
 
-const Header: React.FC<HeaderDispatchPropsType & HeaderStatePropsType> = (props) => {
+    const dispatch: any = useDispatch()
+
+    const handleLogout = () => {
+        dispatch(logout())
+    }
+
+    const items1: MenuProps['items'] = ['1', '2', '3'].map((key) => ({
+        key,
+        label: `nav ${key}`,
+    }));
 
     return (
-        <header className={styles.header}>
-            <div className={styles.header_logo}>
-                <span>LOGO</span>
-            </div>
-
-            <img src='https://avatars.mds.yandex.net/i?id=7be0423dd27fe102452feee9fabc3191-5876477-images-thumbs&n=13&exp=1' alt='avatar' />
-
-            <div className={styles.login_block}>
-                {props.isAuth
-                    ? <div>{props.login} - <button onClick={props.logout}>Log out</button></div>
-                    : <NavLink to={'/login'}>Login</NavLink>
-                }
-            </div>
-        </header>
+        <Header className='header'>
+            <Row>
+                <Col span={20}>
+                    <Menu theme='dark' mode='horizontal' defaultSelectedKeys={['2']} items={items1} />
+                </Col>
+                <Col span={4}>
+                    {isAuth
+                        ? <div style={{ color: 'white' }}>
+                            <Avatar style={{ backgroundColor: '#87d068' }} icon={<UserOutlined />} />
+                            {login}
+                            <Button onClick={handleLogout} type='default'>Logout</Button></div>
+                        : <Button type='primary' >
+                            <NavLink to={'/login'}>Login</NavLink>
+                        </Button>
+                    }
+                </Col>
+            </Row>
+        </Header >
     )
 }
 
-export default Header
+export default AppHeader
