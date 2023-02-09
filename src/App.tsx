@@ -21,11 +21,7 @@ import { Breadcrumb, Layout, Menu, theme } from 'antd';
 import { Content, Footer, Header } from 'antd/es/layout/layout'
 import Sider from 'antd/es/layout/Sider'
 import SubMenu from 'antd/es/menu/SubMenu'
-import Avatar from 'antd/es/avatar'
-import { Col, Row } from 'antd/es/grid'
 import AppHeader from './components/Header/Header'
-
-
 
 
 const items2: MenuProps['items'] = [UserOutlined, LaptopOutlined, NotificationOutlined].map(
@@ -37,7 +33,7 @@ const items2: MenuProps['items'] = [UserOutlined, LaptopOutlined, NotificationOu
       icon: React.createElement(icon),
       label: `subnav ${key}`,
 
-      children: new Array(4).fill(null).map((_, j) => {
+      items: new Array(4).fill(null).map((_, j) => {
         const subKey = index * 4 + j + 1;
         return {
           key: subKey,
@@ -51,6 +47,7 @@ const items2: MenuProps['items'] = [UserOutlined, LaptopOutlined, NotificationOu
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'))
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'))
+const ChatPage = React.lazy(() => import('./components/Chat/ChatPage'))
 
 type MapPropsType = ReturnType<typeof mapStateToProps>
 type DispatchPropsType = {
@@ -65,7 +62,7 @@ const App: React.FC = () => {
   return (
     <Layout>
 
-      <AppHeader/>
+      <AppHeader />
       {/* <Header className='header'>
         <div className='logo' />
         <Row>
@@ -111,8 +108,9 @@ const App: React.FC = () => {
                 <Menu.Item key='4'>
                   <NavLink to='/users'>Users</NavLink>
                 </Menu.Item>
-
-                <Menu.Item key='5'></Menu.Item>
+                <Menu.Item key='5'>
+                  <NavLink to='/chat'>Chat</NavLink>
+                </Menu.Item>
               </SubMenu>
 
 
@@ -129,6 +127,8 @@ const App: React.FC = () => {
                 <Route path='/dialogs/*' element={<DialogsContainer />} />
                 <Route path='/users' element={<UsersPage pageTitle='Users' />} />
                 <Route path='/login' element={<Login />} />
+                <Route path='/chat' element={<ChatPage />} />
+
                 <Route path='/news' element={<News />} />
                 <Route path='/music' element={<Music />} />
                 <Route path='/settings' element={<Settings />} />
